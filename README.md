@@ -16,7 +16,8 @@ Simple attention mechanism implemented in Keras for the following layers:
 ```
 inputs = Input(shape=(input_dims,))
 attention_probs = Dense(input_dims, activation='softmax', name='attention_probs')(inputs)
-attention_mul = merge([inputs, attention_probs], output_shape=input_dims, name='attention_mul', mode='mul')
+#attention_mul = merge([inputs, attention_probs], output_shape=input_dims, name='attention_mul', mode='mul')
+attention_mul = multiply([inputs, attention_probs],name='attention_mul')
 ```
 
 Let's consider this Hello World example:
@@ -51,7 +52,8 @@ The attention mechanism can be implemented in three lines with Keras:
 ```
 inputs = Input(shape=(input_dims,))
 attention_probs = Dense(input_dims, activation='softmax', name='attention_probs')(inputs)
-attention_mul = merge([inputs, attention_probs], output_shape=32, name='attention_mul', mode='mul')
+#attention_mul = merge([inputs, attention_probs], output_shape=32, name='attention_mul', mode='mul')
+attention_mul = multiply([inputs, attention_probs], name='attention_mul')
 ```
 
 We apply a `Dense - Softmax` layer with the same number of output parameters than the `Input` layer. The attention matrix has a shape of `input_dims x input_dims` here.
